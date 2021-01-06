@@ -39,7 +39,6 @@ export class EmpresaComponent implements OnInit, OnDestroy {
         this.ventas.push(venta);
       });
       // Necesario para DataTables
-      console.log(this.ventas);
       this.dtTrigger.next();
     });
   }
