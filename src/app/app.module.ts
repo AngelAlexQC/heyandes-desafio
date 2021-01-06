@@ -8,10 +8,16 @@ import { EmpresasComponent } from "./components/empresas/empresas.component";
 import { EmpresaComponent } from "./components/empresa/empresa.component";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "src/environments/environment";
+import { DataTablesModule } from "angular-datatables";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, EmpresasComponent, EmpresaComponent],
-  imports: [BrowserModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebaseConfig)],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    DataTablesModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

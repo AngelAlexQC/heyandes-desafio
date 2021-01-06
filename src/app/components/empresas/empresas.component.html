@@ -1,1 +1,50 @@
-<p>empresas works!</p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Empresa con más ventas</div>
+        <div class="card-body">
+          <h5 class="card-title">Nombre de la empresa</h5>
+          <h3>$8800000.00</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Més con más ventas</div>
+        <div class="card-body">
+          <h5 class="card-title">Enero</h5>
+          <h3>$8800000.00</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <table
+    datatable
+    [dtOptions]="dtOptions"
+    [dtTrigger]="dtTrigger"
+    class="table table-striped table-hover table-bordered align-middle mt-3"
+  >
+    <thead class="text-center">
+      <tr>
+        <th scope="col">Nombre Empresa</th>
+        <th scope="col">Total Ventas</th>
+        <th scope="col">Comisión</th>
+        <th scope="col">Detalle</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="ventas.length > 0">
+      <tr *ngFor="let sale of ventas">
+        <td class="text-center">{{ sale.nameAgency }}</td>
+        <td class="text-end">{{ sale.finalPrice | currency: "USD" }}</td>
+        <td class="text-end">{{ sale.finalPrice * 0.025 | currency: "USD" }}</td>
+        <td class="text-center">
+          <a class="btn btn-primary btn-sm" [routerLink]="['/empresas', sale.nameAgency]" role="button">
+            <i class="fa fa-eye"></i>&nbsp;Detalle
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
