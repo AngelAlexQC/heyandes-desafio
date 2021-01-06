@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "heyandes-desafio"
+  "defaultProject": "heyandes-desafio",
+  "cli": {
+    "analytics": "ea9bcde6-8122-47d8-88ae-711f09e09ba7"
+  }
 }
