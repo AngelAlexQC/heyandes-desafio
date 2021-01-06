@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "heyandes-desafio": {
+      "hosting": {
+        "heyandes-desafio": [
+          "heyandes-desafio"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "heyandes-desafio"
+  }
+}
