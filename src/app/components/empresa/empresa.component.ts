@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
+import { ActivatedRoute } from "@angular/router";
 import { Observable, Subject } from "rxjs";
 import { Sale } from "src/app/models/sale";
 
@@ -9,17 +10,19 @@ import { Sale } from "src/app/models/sale";
   styleUrls: ["./empresa.component.scss"],
 })
 export class EmpresaComponent implements OnInit, OnDestroy {
+  agencyName: string;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   private salesCollection: AngularFirestoreCollection<Sale>;
   sales: Observable<Sale[]>;
   ventas: Sale[] = [];
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {
     this.salesCollection = afs.collection<Sale>("sales");
     this.sales = this.salesCollection.valueChanges();
   }
 
   ngOnInit(): void {
+    this.agencyName = this.route.snapshot.paramMap.get("nombre");
     this.dtOptions = {
       pagingType: "simple",
       processing: true,
@@ -36,7 +39,9 @@ export class EmpresaComponent implements OnInit, OnDestroy {
     this.sales.subscribe((ventas: Sale[]) => {
       this.ventas = [];
       ventas.forEach((venta) => {
-        this.ventas.push(venta);
+        if (venta.nameAgency == this.agencyName) {
+          this.ventas.push(venta);
+        }
       });
       // Necesario para DataTables
       this.dtTrigger.next();
