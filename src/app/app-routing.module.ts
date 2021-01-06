@@ -5,10 +5,10 @@ import { EmpresasComponent } from "./components/empresas/empresas.component";
 import { HomeComponent } from "./components/home/home.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "home", component: HomeComponent },
   { path: "empresas", component: EmpresasComponent },
   { path: "empresas/:nombre", component: EmpresaComponent },
-  { path: "**", redirectTo: "" },
+  { path: "**", redirectTo: "/home" },
 ];
 
 @NgModule({
