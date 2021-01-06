@@ -3,18 +3,20 @@
     <div class="col-md-6">
       <div class="card text-center">
         <div class="card-header">Empresa con más ventas</div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre de la empresa</h5>
-          <h3>$8800000.00</h3>
+        <div class="card-body" *ngIf="masVentas">
+          <h5 class="card-title">
+            {{ masVentas.nameAgency }}
+          </h5>
+          <h3>{{ masVentas.finalPrice | currency: "USD" }}</h3>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="card text-center">
         <div class="card-header">Més con más ventas</div>
-        <div class="card-body">
-          <h5 class="card-title">Enero</h5>
-          <h3>$8800000.00</h3>
+        <div class="card-body" *ngIf="mesSeleccionado">
+          <h5 class="card-title">{{ meses[mesSeleccionado.month] }}</h5>
+          <h3>{{ mesSeleccionado.finalPrice | currency: "USD" }}</h3>
         </div>
       </div>
     </div>
